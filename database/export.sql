@@ -21,14 +21,14 @@
 
 DROP TABLE IF EXISTS `auth`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `auth` (
   `user_id` varchar(10) NOT NULL,
   `password` varchar(20) NOT NULL DEFAULT '12345678',
   `id` int NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `avt`;
 /*!50001 DROP VIEW IF EXISTS `avt`*/;
 SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 /*!50001 CREATE VIEW `avt` AS SELECT 
  1 AS `tenant_id`,
  1 AS `room_no`,
@@ -63,7 +63,7 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `block`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `block` (
   `block_no` int NOT NULL,
   `block_name` varchar(10) DEFAULT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE `block` (
   PRIMARY KEY (`block_no`),
   KEY `fk_r` (`room_no`),
   CONSTRAINT `fk_r` FOREIGN KEY (`room_no`) REFERENCES `room` (`room_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +91,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `block_admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `block_admin` (
   `admin_id` int NOT NULL,
   `admin_name` varchar(20) DEFAULT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE `block_admin` (
   PRIMARY KEY (`admin_id`),
   KEY `block_no` (`block_no`),
   CONSTRAINT `block_admin_ibfk_1` FOREIGN KEY (`block_no`) REFERENCES `block` (`block_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `employee` (
   `emp_id` int NOT NULL,
   `emp_name` varchar(30) DEFAULT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE `employee` (
   PRIMARY KEY (`emp_id`),
   KEY `block_no` (`block_no`),
   CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`block_no`) REFERENCES `block` (`block_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +148,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `identity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `identity` (
   `proof` varchar(15) DEFAULT NULL,
   `owner_id` int DEFAULT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE `identity` (
   KEY `fk_t` (`tenant_id`),
   CONSTRAINT `fk_t` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`tenant_id`),
   CONSTRAINT `identity_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `owner` (`owner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +178,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `o`;
 /*!50001 DROP VIEW IF EXISTS `o`*/;
 SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 /*!50001 CREATE VIEW `o` AS SELECT 
  1 AS `complaints`*/;
 SET character_set_client = @saved_cs_client;
@@ -190,7 +190,7 @@ SET character_set_client = @saved_cs_client;
 DROP TABLE IF EXISTS `oo`;
 /*!50001 DROP VIEW IF EXISTS `oo`*/;
 SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 /*!50001 CREATE VIEW `oo` AS SELECT 
  1 AS `complaints`,
  1 AS `room_no`*/;
@@ -202,7 +202,7 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `owner`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `owner` (
   `owner_id` int NOT NULL,
   `name` varchar(20) DEFAULT NULL,
@@ -213,7 +213,7 @@ CREATE TABLE `owner` (
   PRIMARY KEY (`owner_id`),
   KEY `FK_rrno` (`room_no`),
   CONSTRAINT `FK_rrno` FOREIGN KEY (`room_no`) REFERENCES `room` (`room_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,7 +232,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `rental`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `rental` (
   `doj` varchar(20) DEFAULT NULL,
   `monthly_rent` int DEFAULT NULL,
@@ -242,7 +242,7 @@ CREATE TABLE `rental` (
   KEY `FK_rno` (`room_no`),
   CONSTRAINT `FK_rno` FOREIGN KEY (`room_no`) REFERENCES `room` (`room_no`),
   CONSTRAINT `rental_ibfk_1` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`tenant_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +261,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `room` (
   `room_no` int NOT NULL,
   `type` varchar(10) DEFAULT NULL,
@@ -274,7 +274,7 @@ CREATE TABLE `room` (
   UNIQUE KEY `reg_no` (`reg_no`),
   KEY `block_no` (`block_no`),
   CONSTRAINT `room_ibfk_1` FOREIGN KEY (`block_no`) REFERENCES `block` (`block_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,7 +294,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tav`;
 /*!50001 DROP VIEW IF EXISTS `tav`*/;
 SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 /*!50001 CREATE VIEW `tav` AS SELECT 
  1 AS `tenant_id`,
  1 AS `room_no`,
@@ -308,7 +308,7 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `tenant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `tenant` (
   `tenant_id` int NOT NULL,
   `name` varchar(30) DEFAULT NULL,
@@ -319,7 +319,7 @@ CREATE TABLE `tenant` (
   PRIMARY KEY (`tenant_id`),
   KEY `fk_rn` (`room_no`),
   CONSTRAINT `fk_rn` FOREIGN KEY (`room_no`) REFERENCES `room` (`room_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,9 +348,9 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `avt` AS select `tenant`.`tenant_id` AS `tenant_id`,`tenant`.`room_no` AS `room_no`,`tenant`.`dob` AS `dob`,`tenant`.`name` AS `name`,`tenant`.`age` AS `age` from `tenant` */;
@@ -366,9 +366,9 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `o` AS select `block`.`complaints` AS `complaints` from `block` */;
@@ -384,9 +384,9 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `oo` AS select `block`.`complaints` AS `complaints`,`block`.`room_no` AS `room_no` from `block` */;
@@ -402,9 +402,9 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `tav` AS select `tenant`.`tenant_id` AS `tenant_id`,`tenant`.`room_no` AS `room_no`,`tenant`.`dob` AS `dob`,`tenant`.`name` AS `name` from `tenant` */;
